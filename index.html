@@ -90,3 +90,47 @@ render();
 
 </body>
 </html>### - 
+here<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>MDT رقابة ايكلس</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>MDT – رقابة ايكلس</h1>
+<nav>
+  <a href="index.html">القوانين</a>
+  <a href="instructions.html">تعليمات الرقابة</a>
+  <a href="mdt.html">MDT</a>
+</nav>
+</header>
+
+<main>
+<h2>أسماء الرقابة</h2>
+
+<input id="nameInput" placeholder="اسم الشخص">
+<button onclick="addName()">➕ إضافة الاسم</button>
+
+<ul id="nameList"></ul>
+</main>
+
+<script>
+function addName(){
+  const input = document.getElementById("nameInput");
+  const list = document.getElementById("nameList");
+
+  if(input.value.trim() === "") return;
+
+  const li = document.createElement("li");
+  li.textContent = input.value;
+  list.appendChild(li);
+
+  input.value = "";
+}
+</script>
+
+</body>
+</html>
