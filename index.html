@@ -1,3 +1,63 @@
-<footer>
-  © 2026 رقابة ايكلس. جميع الحقوق محفوظة BY_SEED ALI
-</footer>
+<!DOCTYPE html>
+<html lang="ar">
+<head>
+<meta charset="UTF-8">
+<title>إضافة رقابة</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header>
+<h1>إضافة أسماء الرقابة</h1>
+<nav>
+  <a href="index.html">القوانين</a>
+  <a href="mdt.html">MDT</a>
+  <a href="add.html">إضافة رقابة</a>
+</nav>
+</header>
+
+<main class="box">
+<input id="nameInput" placeholder="اسم المراقب">
+<button onclick="add()">➕ إضافة</button>
+
+<ul id="names"></ul>
+</main>
+
+<script>
+let names = JSON.parse(localStorage.getItem("eaglesNames")) || [];
+const ul = document.getElementById("names");
+
+function save(){
+  localStorage.setItem("eaglesNames", JSON.stringify(names));
+}
+
+function render(){
+  ul.innerHTML="";
+  names.forEach((n,i)=>{
+    ul.innerHTML += `
+      <li>${n}
+      <button onclick="del(${i})">❌</button>
+      </li>`;
+  });
+}
+
+function add(){
+  const v = nameInput.value.trim();
+  if(!v) return;
+  names.push(v);
+  nameInput.value="";
+  save(); render();
+}
+
+function del(i){
+  names.splice(i,1);
+  save(); render();
+}
+
+render();
+</script>
+
+</body>
+</html> 
+
+
